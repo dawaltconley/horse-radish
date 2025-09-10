@@ -1,13 +1,14 @@
 ---
-import Layout from '@layouts/Page.astro'
+import { SITE } from '@data/site.mjs'
+// import Layout from '@layouts/Page.astro'
+import Layout from '@layouts/Base.astro'
 
-const title = 'Starter Site'
-const description = 'Home page'
+const { title, description } = SITE
 ---
 
 <Layout title={title} description={description}>
   <main class="container mx-auto py-8">
-    <h1>Starter</h1>
+    <h1>{title}</h1>
     <p>{description}</p>
   </main>
 </Layout>

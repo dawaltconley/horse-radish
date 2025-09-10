@@ -11,8 +11,9 @@
 
 /** @type {SiteConfig} */
 export const SITE = {
-  title: 'Starter site',
-  description: 'Site description',
+  title: 'Horse Radish',
+  // description: 'Brooklyn folk rock group',
+  description: 'New album: Stimulus Response',
   domain: new URL('https://example.com'),
   ogImage: undefined,
   favicon: '/favicon.svg',
