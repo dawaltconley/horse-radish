@@ -4,22 +4,34 @@ import { SITE } from '@data/site.mjs'
 // import Layout from '@layouts/Page.astro'
 import Layout from '@layouts/Base.astro'
 import EmailSignUp from '@components/EmailSignUp'
+import ContactForm from '@components/ContactForm'
 
 const { title, description } = SITE
 
 const emailSignUpContent: FormContent = {
   initial: {
-    title: 'Join my mailing list',
-    description: 'Sign up to receive updates when I’m doing an event near you.',
+    title: 'Join our mailing list',
   },
   error: {
     title: 'Something went wrong',
-    description: null,
   },
   success: {
     title: 'Success!',
     description: 'You are now subscribed.',
     // description: 'You will receive an email to confirm your subscription.',
+  },
+}
+
+const contactFormContent: FormContent = {
+  initial: {
+    title: 'Contact us',
+  },
+  error: {
+    title: 'Something went wrong',
+  },
+  success: {
+    title: 'Thank you!',
+    description: 'We received your message and will be in touch soon.',
   },
 }
 ---
@@ -33,6 +45,12 @@ const emailSignUpContent: FormContent = {
       method="POST"
       action="https://script.google.com/macros/s/AKfycbyVdyl6TKl3YPVUXTIQ4z685CTlarTtE-ZxoxNG8TL06gf2D0K8zwgPVAGg3OYzBd3n/exec"
       content={emailSignUpContent}
+    />
+    <ContactForm
+      client:visible
+      method="POST"
+      action="https://o73nuzdoza.execute-api.us-east-1.amazonaws.com/Prod/contact/"
+      content={contactFormContent}
     />
   </main>
 </Layout>
