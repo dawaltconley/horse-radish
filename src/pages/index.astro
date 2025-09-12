@@ -1,14 +1,38 @@
 ---
+import type { FormContent } from '@browser/forms'
 import { SITE } from '@data/site.mjs'
 // import Layout from '@layouts/Page.astro'
 import Layout from '@layouts/Base.astro'
+import EmailSignUp from '@components/EmailSignUp'
 
 const { title, description } = SITE
+
+const emailSignUpContent: FormContent = {
+  initial: {
+    title: 'Join my mailing list',
+    description: 'Sign up to receive updates when I’m doing an event near you.',
+  },
+  error: {
+    title: 'Something went wrong',
+    description: null,
+  },
+  success: {
+    title: 'Success!',
+    description: 'You are now subscribed.',
+    // description: 'You will receive an email to confirm your subscription.',
+  },
+}
 ---
 
 <Layout title={title} description={description}>
   <main class="container mx-auto py-8">
     <h1>{title}</h1>
     <p>{description}</p>
+    <EmailSignUp
+      client:visible
+      method="POST"
+      action="https://script.google.com/macros/s/AKfycbyVdyl6TKl3YPVUXTIQ4z685CTlarTtE-ZxoxNG8TL06gf2D0K8zwgPVAGg3OYzBd3n/exec"
+      content={emailSignUpContent}
+    />
   </main>
 </Layout>
