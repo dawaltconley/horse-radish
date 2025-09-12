@@ -44,6 +44,7 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
+    require('@tailwindcss/forms'),
     plugin(({ addVariant, matchUtilities, matchComponents, theme }) => {
       // custom variants
       addVariant('stuck', ['[data-sticky="stuck"]&', '[data-sticky="stuck"] &'])
