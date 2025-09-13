@@ -6,35 +6,39 @@ export type IconDefinition = FaIconDefinition | IconifyIcon
 
 type IconDict = { default: IconDefinition } & Record<string, IconDefinition>
 
+type IconUrlMatch = (url: URL, iconUrl: URL) => boolean
+
 interface IconOpts {
   name: string
   url?: string | URL
   icons: IconDefinition | IconDict
+  urlMatch?: IconUrlMatch
 }
 
 export class Icon {
   readonly name: string
   readonly icons: IconDict
   readonly url?: URL
+  readonly urlMatch: IconUrlMatch
 
   static readonly urlMap = new Map<string, Icon>()
+  static readonly customMatchers: Icon[] = []
 
-  constructor({ name, url: urlString, icons }: IconOpts) {
+  constructor({ name, url: urlString, urlMatch, icons }: IconOpts) {
     this.name = name
     this.icons = 'default' in icons ? icons : { default: icons }
+    this.urlMatch = urlMatch || Icon.defaultUrlMatch
+
+    if (urlMatch) {
+      Icon.customMatchers.push(this)
+    }
 
     if (urlString) {
       const url = toUrl(urlString)
       if (!url) throw new Error(`Bad url string in icon: ${name}`)
+      this.url = url
 
       const urlKey = url.host || url.protocol
-      if (Icon.urlMap.has(urlKey)) {
-        throw new Error(
-          `Duplicate icon urls: ${name} conflicts with ${Icon.urlMap.get(
-            urlKey,
-          )}`,
-        )
-      }
       Icon.urlMap.set(urlKey, this)
     }
   }
@@ -46,16 +50,25 @@ export class Icon {
   }
 
   matchesUrl(url: URL): boolean {
-    const { protocol, host } = url
-    return this.url?.host ? host === this.url.host : protocol === this.url?.href
+    return this.url ? this.urlMatch(url, this.url) : false
   }
-}
 
-export const getIconFromUrl = (urlString: string | URL): Icon | null => {
-  const url = toUrl(urlString)
-  if (!url) return null
-  const { protocol, host } = url
-  return Icon.urlMap.get(host) || Icon.urlMap.get(protocol) || null
+  static getIconFromUrl(urlString: string | URL): Icon | null {
+    const url = toUrl(urlString)
+    if (!url) return null
+    const { protocol, host } = url
+    return (
+      Icon.urlMap.get(host) ||
+      Icon.customMatchers.find((i) => i.matchesUrl(url)) ||
+      Icon.urlMap.get(protocol) ||
+      null
+    )
+  }
+
+  static defaultUrlMatch(url: URL, iconUrl: URL): boolean {
+    const { protocol, host } = url
+    return iconUrl?.host ? host === iconUrl.host : protocol === iconUrl?.href
+  }
 }
 
 export const faToIconify = (icon: FaIconDefinition): IconifyIcon => {

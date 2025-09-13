@@ -9,7 +9,7 @@ import { faTiktok } from '@fortawesome/free-brands-svg-icons/faTiktok'
 import { faFacebook } from '@fortawesome/free-brands-svg-icons/faFacebook'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons/faYoutube'
 
-import { Icon, getIconFromUrl } from '@lib/icons'
+import { Icon } from '@lib/icons'
 
 const icons = {
   email: new Icon({ name: 'Email', url: 'mailto:', icons: faEnvelope }),
@@ -50,4 +50,5 @@ export default icons
 
 export type IconKey = keyof typeof icons
 export const isIconKey = (str: string): str is IconKey => str in icons
-export { getIconFromUrl }
+export const getIconFromUrl: typeof Icon.getIconFromUrl = (...args) =>
+  Icon.getIconFromUrl(...args)
