@@ -8,6 +8,9 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons/faInstagram'
 import { faTiktok } from '@fortawesome/free-brands-svg-icons/faTiktok'
 import { faFacebook } from '@fortawesome/free-brands-svg-icons/faFacebook'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons/faYoutube'
+import { faSpotify } from '@fortawesome/free-brands-svg-icons/faSpotify'
+import { faBandcamp } from '@fortawesome/free-brands-svg-icons/faBandcamp'
+import { faItunes } from '@fortawesome/free-brands-svg-icons/faItunes'
 
 import { Icon } from '@lib/icons'
 
@@ -43,6 +46,22 @@ const icons = {
     name: 'YouTube',
     url: 'https://www.youtube.com/',
     icons: faYoutube,
+  }),
+  spotify: new Icon({
+    name: 'Spotify',
+    url: 'https://open.spotify.com/',
+    icons: faSpotify,
+  }),
+  bandcamp: new Icon({
+    name: 'Bandcamp',
+    url: 'https://bandcamp.com/',
+    urlMatch: (url, iconUrl) => url.hostname.endsWith(`.${iconUrl.hostname}`),
+    icons: faBandcamp,
+  }),
+  itunes: new Icon({
+    name: 'Apple Music',
+    url: 'https://music.apple.com/',
+    icons: faItunes,
   }),
 } as const
 

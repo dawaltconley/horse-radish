@@ -1,4 +1,5 @@
 ---
+import type { Icon } from '@lib/icons'
 import type { Link } from '@lib/links'
 import type { FormContent } from '@browser/forms'
 import { SITE } from '@data/site.mjs'
@@ -7,15 +8,35 @@ import AlbumReleasePreview from '@components/AlbumReleasePreview.astro'
 import EmailSignUp from '@components/EmailSignUp'
 import ContactForm from '@components/ContactForm'
 import Image from '@components/Image.astro'
+import IconLink from '@components/IconLink'
+import icons, { getIconFromUrl } from '@data/icons'
+import { isNotEmpty } from '@lib/utils'
 
 const { title, description } = SITE
 
 const navLinks: Link[] = [
-  { text: 'Music', href: '' },
-  { text: 'Shows', href: '' },
-  { text: 'Merch', href: '' },
-  { text: 'Contact', href: '#contact' },
+  // { text: 'Music', href: 'https://horseradishmusic.bandcamp.com/' },
+  // { text: 'Shows', href: '' },
+  // { text: 'Merch', href: '' },
+  // { text: 'Contact', href: '#contact' },
 ]
+
+interface IconLink {
+  href: string
+  icon: Icon
+}
+
+const socialLinks: IconLink[] = [
+  'https://www.instagram.com/horseradishmusic/',
+  'https://horseradishmusic.bandcamp.com/releases',
+  'https://open.spotify.com/artist/57MlKq8dUSBNC5Fe5OjAJv?si=uM1Q73FMTSCnmi-Ovy-ezA',
+  'https://music.apple.com/us/artist/horse-radish/1547582014',
+]
+  .map((link) => ({
+    href: link,
+    icon: getIconFromUrl(link),
+  }))
+  .filter((social): social is IconLink => Boolean(social.icon))
 
 const emailSignUpContent: FormContent = {
   initial: {
@@ -60,19 +81,39 @@ const contactFormContent: FormContent = {
     <header class="my-16 text-center">
       <h1 class="font-display text-5xl">{title}</h1>
       <!-- <p class="">{description}</p> -->
-      <nav class="mt-2">
-        <ul class="flex justify-center divide-x divide-white">
-          {
-            navLinks.map(({ text, href }) => (
-              <li>
-                <a class="px-4 py-1" href={href}>
-                  {text}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
+      {
+        navLinks.length > 0 && (
+          <nav class="mt-2">
+            <ul class="flex justify-center divide-x divide-white">
+              {navLinks.map(({ text, href }) => (
+                <li>
+                  <a class="px-4 py-1" href={href}>
+                    {text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )
+      }
+      {
+        socialLinks.length > 0 && (
+          <ul class="mt-2 flex justify-center space-x-3 text-xl">
+            {socialLinks
+              .map(({ href, icon }) => (
+                <li>
+                  <IconLink
+                    icon={icon.getDefinition()}
+                    url={href}
+                    title={icon.name}
+                    className="hover:text-cyan-300 duration-150"
+                  />{' '}
+                </li>
+              ))
+              .filter(isNotEmpty)}
+          </ul>
+        )
+      }
     </header>
     <div class="my-16">
       <AlbumReleasePreview date="2025-10-03 00:00:00 EST" />
