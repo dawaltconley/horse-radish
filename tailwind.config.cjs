@@ -25,6 +25,7 @@ module.exports = {
       fontFamily: {
         sans: ['InterVariable', 'Inter', ...defaultTheme.fontFamily.sans],
         serif: ['Georgia', ...defaultTheme.fontFamily.serif],
+        display: ['Shrikhand', ...defaultTheme.fontFamily.serif],
       },
       fontSize: {
         smaller: 'smaller',

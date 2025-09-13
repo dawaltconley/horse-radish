@@ -80,6 +80,24 @@
     content: var(--tw-content, ' — ');
   }
 
+  .contact-form {
+    display: grid;
+    grid-template-columns: max-content auto;
+    @apply gap-x-4 gap-y-2;
+  }
+
+  .form-label {
+    @apply relative col-span-2 text-xs;
+  }
+
+  .form-field {
+    @apply text-gray-950;
+  }
+
+  .form-button {
+    @apply whitespace-nowrap bg-gray-900 px-4 py-2 text-center text-white duration-150 hover:bg-gray-600 disabled:bg-gray-600;
+  }
+
   .fa-inline {
     width: 1em;
     height: 1em;

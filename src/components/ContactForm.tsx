@@ -53,15 +53,15 @@ export default function ContactForm({
   const { description } = getContent(content, status)
 
   return (
-    <div ref={containerRef} className="text-center">
+    <div ref={containerRef}>
       <h2
-        className={clsx('heading-2', {
+        className={clsx('text-center font-display text-xl', {
           capitalize: status !== 'error',
         })}
       >
         {getContent(content, status).title}
       </h2>
-      <div className="mx-auto my-4 max-w-prose space-y-2 font-serif">
+      <div className="mx-auto my-2 max-w-prose space-y-2 font-serif">
         {status === 'error' &&
           (errorMessage ? (
             <ErrorMessage message={errorMessage} />
@@ -76,7 +76,7 @@ export default function ContactForm({
         <form
           ref={formRef}
           {...formProps}
-          className="contact-form mx-auto mt-8 w-full max-w-xl grid-cols-2 text-lg @container/contact-form"
+          className="contact-form mx-auto mt-4 w-full max-w-xl grid-cols-2 text-lg @container/contact-form"
           onSubmit={async (e) => {
             let error: string | null = null
             try {
@@ -98,6 +98,7 @@ export default function ContactForm({
               id="contact-name"
               name="name"
               type="text"
+              // placeholder="Name"
               className="form-field w-full"
               autoComplete="name"
               disabled={status === 'submitting'}
@@ -110,6 +111,7 @@ export default function ContactForm({
               id="contact-email"
               name="email"
               type="email"
+              // placeholder="Email"
               className="form-field w-full"
               autoComplete="email"
               disabled={status === 'submitting'}
@@ -122,6 +124,7 @@ export default function ContactForm({
               id="contact-subject"
               name="subject"
               type="text"
+              // placeholder="Subject"
               className="form-field w-full"
               disabled={status === 'submitting'}
               required
@@ -143,6 +146,7 @@ export default function ContactForm({
             <textarea
               id="contact-message"
               name="message"
+              // placeholder="Enter your message here"
               className="form-field min-h-[12rem] w-full"
               disabled={status === 'submitting'}
               required

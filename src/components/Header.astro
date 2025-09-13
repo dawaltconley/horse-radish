@@ -30,8 +30,8 @@ const H = useAsTitle ? 'h1' : 'h4'
       }
     : {}}
 >
-  <nav class="container mx-auto flex h-14 items-end justify-between py-2">
-    <H class="font-display text-2xl">
+  <nav class="container mx-auto flex items-center justify-between py-2">
+    <H class="font-display text-4xl">
       <a href="/" class="underline-link">{title}</a>
     </H>
 
@@ -44,7 +44,7 @@ const H = useAsTitle ? 'h1' : 'h4'
       </span>
     </button>
 
-    <ul class="header__links sm:-mr-4 sm:flex sm:items-end">
+    <ul class="header__links sm:-mr-4 sm:flex sm:items-center">
       {
         links.map((link) => (
           <li class="header__link group/link relative inline-block hover:z-10">

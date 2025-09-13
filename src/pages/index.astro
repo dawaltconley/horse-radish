@@ -1,12 +1,20 @@
 ---
+import type { Link } from '@lib/links'
 import type { FormContent } from '@browser/forms'
 import { SITE } from '@data/site.mjs'
-// import Layout from '@layouts/Page.astro'
 import Layout from '@layouts/Base.astro'
 import EmailSignUp from '@components/EmailSignUp'
 import ContactForm from '@components/ContactForm'
+import Image from '@components/Image.astro'
 
 const { title, description } = SITE
+
+const navLinks: Link[] = [
+  { text: 'Music', href: '' },
+  { text: 'Shows', href: '' },
+  { text: 'Merch', href: '' },
+  { text: 'Contact', href: '#contact' },
+]
 
 const emailSignUpContent: FormContent = {
   initial: {
@@ -37,20 +45,49 @@ const contactFormContent: FormContent = {
 ---
 
 <Layout title={title} description={description}>
-  <main class="container mx-auto py-8">
-    <h1>{title}</h1>
-    <p>{description}</p>
-    <EmailSignUp
-      client:visible
-      method="POST"
-      action="https://script.google.com/macros/s/AKfycbyVdyl6TKl3YPVUXTIQ4z685CTlarTtE-ZxoxNG8TL06gf2D0K8zwgPVAGg3OYzBd3n/exec"
-      content={emailSignUpContent}
-    />
-    <ContactForm
-      client:visible
-      method="POST"
-      action="https://o73nuzdoza.execute-api.us-east-1.amazonaws.com/Prod/contact/"
-      content={contactFormContent}
-    />
+  <Image
+    src="./src/assets/young-ethels-1.jpg"
+    alt=""
+    sizes="100vw"
+    class="vignette fixed z-0 h-screen w-screen bg-gray-950"
+    imgProps={{
+      class:
+        'object-cover w-full h-full bg-blend-screen mix-blend-screen opacity-50',
+    }}
+  />
+  <main class="container relative z-10 mx-auto py-8 text-white">
+    <header class="my-16 text-center">
+      <h1 class="font-display text-5xl">{title}</h1>
+      <!-- <p class="">{description}</p> -->
+      <nav class="mt-2">
+        <ul class="flex justify-center divide-x divide-white">
+          {
+            navLinks.map(({ text, href }) => (
+              <li>
+                <a class="px-4 py-1" href={href}>
+                  {text}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </header>
+    <div class="my-16">
+      <EmailSignUp
+        client:visible
+        method="POST"
+        action="https://script.google.com/macros/s/AKfycbyVdyl6TKl3YPVUXTIQ4z685CTlarTtE-ZxoxNG8TL06gf2D0K8zwgPVAGg3OYzBd3n/exec"
+        content={emailSignUpContent}
+      />
+    </div>
+    <div id="contact" class="my-16">
+      <ContactForm
+        client:visible
+        method="POST"
+        action="https://o73nuzdoza.execute-api.us-east-1.amazonaws.com/Prod/contact/"
+        content={contactFormContent}
+      />
+    </div>
   </main>
 </Layout>

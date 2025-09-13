@@ -42,7 +42,9 @@ export default function EmailSignUp({
 
   return (
     <div ref={containerRef} className="mx-auto w-auto text-center">
-      <h2 className="heading-2 mb-4">{getContent(content, status).title}</h2>
+      <h2 className="mb-4 font-display text-xl">
+        {getContent(content, status).title}
+      </h2>
       {status === 'error' &&
         (errorMessage ? (
           <ErrorMessage message={errorMessage} />
