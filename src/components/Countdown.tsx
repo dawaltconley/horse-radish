@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import useAnimationFrame from '@lib/browser/hooks/useAnimationFrame'
+import clsx from 'clsx'
 
 export interface CountdownProps {
   date: Date
@@ -18,10 +19,33 @@ export default function CountDown({ date }: CountdownProps) {
 
   return (
     <time dateTime={`${days}d ${hours}h ${minutes}m ${seconds}s`}>
-      <span>{days} days, </span>
-      <span>{hours} hours, </span>
-      <span>{minutes} minutes, </span>
-      <span>{seconds} seconds</span>
+      <Unit number={days} unit="days" />, <Unit number={hours} unit="hours" />,{' '}
+      <Unit number={minutes} unit="minutes" />,{' '}
+      <Unit number={seconds} unit="seconds" fixedWidth />
     </time>
+  )
+}
+
+interface UnitProps {
+  number: number
+  unit: string
+  fixedWidth?: boolean
+}
+
+function Unit({ number, unit, fixedWidth = false }: UnitProps) {
+  const numString = fixedWidth
+    ? number.toString().padStart(2, '0')
+    : number.toString()
+  return (
+    <span className="whitespace-nowrap">
+      <span
+        className={clsx('inline-block text-right', {
+          'w-[1.5em]': fixedWidth,
+        })}
+      >
+        {numString}
+      </span>{' '}
+      {unit}
+    </span>
   )
 }
