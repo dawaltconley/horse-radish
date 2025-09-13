@@ -67,17 +67,22 @@ const contactFormContent: FormContent = {
 ---
 
 <Layout title={title} description={description}>
-  <Image
-    src="./src/assets/young-ethels-1.jpg"
-    alt=""
-    sizes="100vw"
-    class="vignette fixed z-0 h-screen w-screen bg-gray-950"
-    imgProps={{
-      class:
-        'object-cover w-full h-full bg-blend-screen mix-blend-screen opacity-50',
-    }}
-  />
-  <main class="container relative z-10 mx-auto py-8 text-white">
+  <div class="fixed z-0 h-screen w-screen font-light">
+    <Image
+      src="./src/assets/young-ethels-1.jpg"
+      alt=""
+      sizes="100vw"
+      class="absolute z-0 h-full w-full contrast-50 saturate-[30%]"
+      imgProps={{
+        class: 'object-cover w-full h-full',
+      }}
+    />
+    <div
+      class="vignette absolute z-10 h-full w-full bg-gray-950/50 mix-blend-multiply"
+    >
+    </div>
+  </div>
+  <main class="text-shadow container relative z-10 mx-auto py-8 text-white">
     <header class="my-16 text-center">
       <h1 class="font-display text-5xl">{title}</h1>
       <!-- <p class="">{description}</p> -->
@@ -118,7 +123,7 @@ const contactFormContent: FormContent = {
     <div class="my-16">
       <AlbumReleasePreview date="2025-10-03 00:00:00 EST" />
     </div>
-    <div class="my-16">
+    <div class="my-24">
       <EmailSignUp
         client:visible
         method="POST"
@@ -126,7 +131,7 @@ const contactFormContent: FormContent = {
         content={emailSignUpContent}
       />
     </div>
-    <div id="contact" class="my-16">
+    <div id="contact" class="my-24">
       <ContactForm
         client:visible
         method="POST"

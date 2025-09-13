@@ -46,8 +46,7 @@
 
   .btn {
     display: inline-block;
-    padding: theme('spacing.4') theme('spacing.6');
-    border-radius: theme('borderRadius.full');
+    padding: theme('spacing.2') theme('spacing.4');
     font-size: theme('fontSize.base');
     font-weight: theme('fontWeight.medium');
     white-space: nowrap;
@@ -64,6 +63,33 @@
     background-color: #{"theme('colors.primary')"};
     &:hover {
       background-color: #{"theme('colors.primary/80%')"};
+    }
+  }
+
+  .btn--neutral {
+    border: white 1px solid;
+    color: theme('colors.white');
+    background-color: #{"theme('colors.gray.950/50%')"};
+
+    &:hover {
+      background-color: #{"theme('colors.gray.950/100%')"};
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+    }
+  }
+
+  .btn--blur {
+    border: white 1px solid;
+    color: theme('colors.white');
+    background-color: #{"theme('colors.gray.950/0%')"};
+    backdrop-filter: blur(4px);
+
+    &:hover {
+      background-color: #{"theme('colors.gray.950/50%')"};
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
     }
   }
 
@@ -91,11 +117,12 @@
   }
 
   .form-field {
-    @apply text-gray-950;
+    @apply border border-white text-gray-950;
   }
 
   .form-button {
-    @apply whitespace-nowrap bg-gray-900 px-4 py-2 text-center text-white duration-150 hover:bg-gray-600 disabled:bg-gray-600;
+    @apply btn btn--blur max-w-none whitespace-nowrap disabled:bg-gray-600;
+    // @apply whitespace-nowrap bg-gray-900 px-4 py-2 text-center text-white duration-150 hover:bg-gray-600 disabled:bg-gray-600;
   }
 
   .fa-inline {

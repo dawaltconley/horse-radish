@@ -55,7 +55,7 @@ export default function ContactForm({
   return (
     <div ref={containerRef}>
       <h2
-        className={clsx('text-center font-display text-xl', {
+        className={clsx('text-center font-display text-2xl', {
           capitalize: status !== 'error',
         })}
       >

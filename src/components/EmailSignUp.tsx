@@ -42,7 +42,7 @@ export default function EmailSignUp({
 
   return (
     <div ref={containerRef} className="mx-auto w-auto text-center">
-      <h2 className="mb-4 font-display text-xl">
+      <h2 className="mb-4 font-display text-2xl">
         {getContent(content, status).title}
       </h2>
       {status === 'error' &&
@@ -97,7 +97,7 @@ export default function EmailSignUp({
           />
           <button
             type="submit"
-            className="form-button w-28"
+            className="form-button w-28 border-l-0"
             disabled={status === 'submitting'}
           >
             {status === 'submitting' ? (

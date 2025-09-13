@@ -15,16 +15,21 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' })
     src="./src/assets/stimulus-response-album-cover.jpg"
     alt="Stimulus Response album art"
     sizes="100vw"
-    class="aspect-square max-w-96 shrink grow-0 md:justify-self-end"
+    class="album-box-shadow aspect-square max-w-96 shrink grow-0 shadow-gray-950/50 md:justify-self-end"
   />
-  <div class="max-w-96 space-y-4 self-center md:max-w-none">
-    <h2 class="font-display text-4xl">
-      New Album: <span class="whitespace-nowrap">Stimulus Response</span>
-    </h2>
+  <div class="max-w-96 space-y-4 self-center justify-self-start md:max-w-none">
+    <h2 class="font-display text-4xl">Stimulus Response</h2>
     <p class="text-2xl">
       Out everywhere <time
         class="whitespace-nowrap"
         datetime={date.toISOString()}>{dateFormat.format(date)}</time
+      >
+    </p>
+    <p>
+      <a
+        class="btn btn--blur"
+        href="https://horseradishmusic.bandcamp.com/album/stimulus-response"
+        >Pre-order now</a
       >
     </p>
   </div>
@@ -32,3 +37,9 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' })
     <CountDown client:only date={date} />
   </div>
 </div>
+
+<style>
+  .album-box-shadow {
+    box-shadow: 0 0 2rem 1rem theme('colors.gray.950/0.5');
+  }
+</style>

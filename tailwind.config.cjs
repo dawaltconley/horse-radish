@@ -23,7 +23,7 @@ module.exports = {
         primary: colors.blue['700'], // or alias to a whole range
       },
       fontFamily: {
-        sans: ['InterVariable', 'Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
         serif: ['Georgia', ...defaultTheme.fontFamily.serif],
         display: ['Shrikhand', ...defaultTheme.fontFamily.serif],
       },
