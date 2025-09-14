@@ -61,7 +61,7 @@ export default function ContactForm({
       >
         {getContent(content, status).title}
       </h2>
-      <div className="mx-auto my-2 max-w-prose space-y-2 font-serif">
+      <div className="mx-auto my-2 max-w-prose space-y-2 text-center">
         {status === 'error' &&
           (errorMessage ? (
             <ErrorMessage message={errorMessage} />

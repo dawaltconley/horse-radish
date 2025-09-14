@@ -51,7 +51,7 @@ export default function EmailSignUp({
         ) : editStatus === 'error' ? (
           <ErrorMessage message="Error message will show here." />
         ) : null)}
-      {description && <p className="mt-2 font-serif">{description}</p>}
+      {description && <p className="mt-2">{description}</p>}
       {status !== 'success' && (
         <form
           {...formProps}

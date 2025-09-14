@@ -71,7 +71,7 @@
     color: theme('colors.white');
     background-color: #{"theme('colors.gray.950/50%')"};
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: #{"theme('colors.gray.950/100%')"};
       text-decoration: underline;
       text-decoration-thickness: 1px;
@@ -85,7 +85,7 @@
     background-color: #{"theme('colors.gray.950/0%')"};
     backdrop-filter: blur(4px);
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: #{"theme('colors.gray.950/50%')"};
       text-decoration: underline;
       text-decoration-thickness: 1px;
@@ -121,7 +121,7 @@
   }
 
   .form-button {
-    @apply btn btn--blur max-w-none whitespace-nowrap disabled:bg-gray-600;
+    @apply btn btn--blur max-w-none whitespace-nowrap duration-500 ease-out disabled:border-gray-300 disabled:bg-gray-300/30 disabled:text-gray-200;
     // @apply whitespace-nowrap bg-gray-900 px-4 py-2 text-center text-white duration-150 hover:bg-gray-600 disabled:bg-gray-600;
   }
 
