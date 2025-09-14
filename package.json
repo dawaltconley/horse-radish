@@ -12,9 +12,13 @@
     "cloudformation:package": "aws cloudformation package --template-file aws.template.yaml --s3-bucket cf-templates-m6s9n0rrcicj-us-east-1 --s3-prefix static-websites --output-template-file ./packaged.template.yaml",
     "cloudformation:deploy": "aws cloudformation deploy --template-file ./packaged.template.yaml --stack-name \"$AWS_STACK_NAME\" --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND --parameter-overrides \"$AWS_TEMPLATE_PARAMS\""
   },
+  "overrides": {
+    "react": "npm:@preact/compat@latest",
+    "react-dom": "npm:@preact/compat@latest"
+  },
   "dependencies": {
     "@11ty/eleventy-fetch": "^4.0.1",
-    "@astrojs/react": "^4.3.1",
+    "@astrojs/preact": "^4.1.1",
     "@dawaltconley/responsive-images": "^0.5.1",
     "@fortawesome/fontawesome-common-types": "^6.4.2",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
@@ -32,8 +36,6 @@
     "@types/lodash": "^4.17.0",
     "@types/mime-types": "^2.1.4",
     "@types/node-fetch": "^2.6.11",
-    "@types/react": "^18.2.74",
-    "@types/react-dom": "^18.2.24",
     "astro": "^5.13.7",
     "autoprefixer": "^10.4.19",
     "clsx": "^2.1.0",
@@ -43,8 +45,7 @@
     "mime-types": "^2.1.35",
     "netlify-plugin-cache": "^1.0.3",
     "postcss": "^8.4.38",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "preact": "^10.27.2",
     "sass": "^1.74.1",
     "sass-parallax": "^0.6.1",
     "sass-tailwind-functions": "^2.0.0",
