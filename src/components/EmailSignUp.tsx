@@ -79,7 +79,7 @@ export default function EmailSignUp({
             name="email"
             type="email"
             placeholder="Enter your email"
-            className="form-field w-full border-r-0"
+            className="form-field w-full rounded-r-none border-r-0"
             autoComplete="email"
             disabled={status === 'submitting'}
             required
@@ -97,7 +97,7 @@ export default function EmailSignUp({
           />
           <button
             type="submit"
-            className="form-button w-28 border-l-0"
+            className="form-button w-28 rounded-l-none border-l-0"
             disabled={status === 'submitting'}
           >
             {status === 'submitting' ? (
