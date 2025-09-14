@@ -20,7 +20,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: colors.blue['700'], // or alias to a whole range
+        primary: colors.lime['400'], // or alias to a whole range
       },
       fontFamily: {
         sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
