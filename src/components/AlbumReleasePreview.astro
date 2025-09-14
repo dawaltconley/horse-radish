@@ -14,8 +14,9 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' })
   <Image
     src="./src/assets/stimulus-response-album-cover.jpg"
     alt="Stimulus Response album art"
-    sizes="100vw"
+    sizes="(min-width: 1536px) 432px, (min-width: 1024px) 384px, (min-width: 768px) 328px, (min-width: 384px) 384px, 100vw"
     class="album-box-shadow aspect-square max-w-96 shrink grow-0 shadow-gray-950/50 md:justify-self-end"
+    imgProps={{ loading: 'eager' }}
   />
   <div
     class="max-w-96 space-y-4 self-center text-center md:max-w-none md:justify-self-start md:text-left"
