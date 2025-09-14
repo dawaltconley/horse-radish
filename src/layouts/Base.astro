@@ -73,6 +73,17 @@ const twitterHandle = SOCIALS?.map((s) => toUrl(s || ''))
       href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Shrikhand&display=swap"
       rel="stylesheet"
     />
+
+    {
+      import.meta.env.MODE === 'production' && (
+        <script
+          is:inline
+          defer
+          data-domain="horseradish.band"
+          src="https://plausible.io/js/script.outbound-links.tagged-events.js"
+        />
+      )
+    }
   </head>
   <body class={className}>
     <slot />
