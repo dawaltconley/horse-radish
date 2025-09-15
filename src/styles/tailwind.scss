@@ -72,6 +72,7 @@
   .btn {
     display: inline-block;
     padding: theme('spacing.2') theme('spacing.4');
+    border-radius: #{"theme('borderRadius.sm')"};
     font-size: theme('fontSize.base');
     font-weight: theme('fontWeight.medium');
     white-space: nowrap;
@@ -146,7 +147,7 @@
   }
 
   .form-field {
-    @apply border border-white text-gray-950;
+    @apply rounded-sm border border-white text-gray-950;
   }
 
   .form-button {
