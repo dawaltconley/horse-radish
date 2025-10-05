@@ -4,7 +4,7 @@ import type { Link } from '@lib/links'
 import type { FormContent } from '@browser/forms'
 import { SITE } from '@data/site.mjs'
 import Layout from '@layouts/Base.astro'
-import AlbumReleasePreview from '@components/AlbumReleasePreview.astro'
+import AlbumPreview from '@components/AlbumPreview.astro'
 import EmailSignUp from '@components/EmailSignUp'
 import ContactForm from '@components/ContactForm'
 import Image from '@components/Image.astro'
@@ -122,7 +122,7 @@ const contactFormContent: FormContent = {
       }
     </header>
     <div class="my-16">
-      <AlbumReleasePreview date="2025-10-03 00:00:00 EDT" />
+      <AlbumPreview date="2025-10-03 00:00:00 EDT" />
     </div>
     <div class="my-24">
       <EmailSignUp
